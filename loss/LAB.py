@@ -25,8 +25,8 @@ class lab_Loss(nn.Module):
         return p
 
     def loss_ab(self,img,gt,alpha,tab,levels):
-        p= self.Hist_2_Dist_AB(img, tab,alpha).cuda()
-        q= self.Hist_2_Dist_AB(gt,tab,alpha).cuda()
+        p= self.Hist_2_Dist_AB(img, tab,alpha) #.cuda()
+        q= self.Hist_2_Dist_AB(gt,tab,alpha) #.cuda()
         p = torch.clamp(p, 0.001, 0.999)
         loss = -(q*torch.log(p)).sum([1,2,3]).mean()
         return loss
@@ -35,7 +35,7 @@ class lab_Loss(nn.Module):
 
 
     def forward(self,img,gt):
-	    tab=quantAB(self.levels,self.vmin,self.vmax).cuda()
+	    tab=quantAB(self.levels,self.vmin,self.vmax)# .cuda()
 	    lab_img=torch.clamp(rgb2lab(img),self.vmin,self.vmax)
 	    lab_gt=torch.clamp(rgb2lab(gt),self.vmin,self.vmax)
 

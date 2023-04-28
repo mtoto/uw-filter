@@ -1,0 +1,9 @@
+.DS_Store
+test/*
+data/*
+u-shape-venv/*
+saved_models/*
+saved_models/G/*
+images/*
+.git
+.git/*
